@@ -1,0 +1,9 @@
+types **************************
+
+CORE TYPES
+Number : includes the integers and floats. (1, 5.3, -10)
+string : text. Allows to use template literals.
+boolean : true or false. It doesn't includes the 0 and 1.
+
+
+
