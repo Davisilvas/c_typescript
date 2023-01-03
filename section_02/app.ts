@@ -1,39 +1,44 @@
-console.log("Hello world!!!")
-
-console.log(5 + 7)
-
-console.log("******section 02 lesson 01******")
-console.log("### CORE DATA TYPES ###")
-
-function add (n1: number, n2: number){
-    return n1 + n2
-}
-
-const v1 = '10'
-const v2 = 10
-const v3 = 8
-
-// const exec1 = add(v1, v2) -> nesse caso o próprio vscode vai apontar erro dizendo que o tipo passado pra func está errado
-const exec2 = add(v3, v2)
-
-console.log(`| Exec certa ${exec2}`)
-
-
-console.log("******section 02 lesson 02******")
-
-const printResult = true
-const resultPhrase = "The result is: "
-
-function add2 (n1: number, n2: number, showResult: boolean, phrase: string){
-    const result = n1 + n2
-
-    if(showResult){
-        console.log(phrase + result)
-    } else{
-        return result
-    }
-}
-
-add2(v2, v3, printResult, resultPhrase );
-
+console.log("##########################")
 console.log("******section 02 lesson 03******")
+console.log("OBJECT TYPES")
+
+// const person: {
+//     name: string;
+//     age: number;
+//     hobbies: string[];
+//     role: [number, string] -> this is how we declaire a tuple
+// } = {
+//     name: 'Davi',
+//     age: 21,
+//     hobbies: ['Sports', 'Gaming'],
+//     role: [2, 'author']
+// }
+
+const person = {
+    name: 'Davi',
+    age: 21,
+    hobbies: ['Sports', 'Gaming'],
+    role: [2, 'author']
+}
+
+
+// -> favouritActivities = 'Dancing' -> this line is wrong because its just a string and not a array of strings
+
+
+// what we'll see if we hover the mouse over the const person is the object type inferred by TS. In this we don't have a tradiotinal ket value pairs, but key type pairs.
+
+//console.log(person.nickname)
+
+let favouritActivities: string[];  // This syntax accepts only an array of strings. If we wish to mux types of data we should do other syntax
+
+favouritActivities = ['Dancing']
+
+let any: any[] 
+// the syntax above accepts a mix of types of datas
+
+any = [1, 'Davi', true, favouritActivities]
+
+person.role.push('admin')
+person.role[1] = 10
+
+console.log(person.role)

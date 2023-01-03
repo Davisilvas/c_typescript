@@ -6,4 +6,30 @@ string : text. Allows to use template literals.
 boolean : true or false. It doesn't includes the 0 and 1.
 
 
+type inference means that TS does it's best to understand wich type you have in a certain var or const.
 
+
+##########
+
+Array - Any Js array. Type can be flexible or strict (regarding the element types).
+
+Tuple - Added by TS: fixed-length array. 
+
+When the tuple finally gets converted to array when compiled to JS, JS will treat it as a normal array. But during TS development we'll get errors if we get to make one.
+
+In TS a push is acceptable. So we'll won't get any errors durign development. Gotta stay alert to this.
+
+But trying to assign a new value by the following syntax we'll get an error.
+    person.role = [0, 'aaa', 'bbb'] 
+And that's because during role first assignment we stated that it would have only 2 itens. So we can conclude that length is enforced if we assign a tuple
+
+
+########## Lesson 20 - Working with enums
+
+Enum Type
+
+It does exists in other programing languages, but in vanilla JS don't.
+
+Enum sample -> enum{NEW, OLD}
+
+Added by TS: automatically enumerated global constant identifiers.
