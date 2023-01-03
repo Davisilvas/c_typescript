@@ -1,44 +1,60 @@
-console.log("##########################")
-console.log("******section 02 lesson 03******")
-console.log("OBJECT TYPES")
+console.log("lesson 22 Union types")
 
-// const person: {
-//     name: string;
-//     age: number;
-//     hobbies: string[];
-//     role: [number, string] -> this is how we declaire a tuple
-// } = {
-//     name: 'Davi',
-//     age: 21,
-//     hobbies: ['Sports', 'Gaming'],
-//     role: [2, 'author']
-// }
 
-const person = {
-    name: 'Davi',
-    age: 21,
-    hobbies: ['Sports', 'Gaming'],
-    role: [2, 'author']
+function combine (input1: number | string, input2: number | string){
+    let result
+
+    if( typeof input1 === 'number' && typeof input2 === 'number'){
+        result = input1 + input2
+    } else {
+        result = input1.toString() + input2.toString()
+    }
+
+    return result
 }
 
+const run1 = combine (22, 24)
 
-// -> favouritActivities = 'Dancing' -> this line is wrong because its just a string and not a array of strings
+const run2 = combine("Davi", "Maria")
+
+console.log(run1)
+console.log(run2)
+
+console.log(' ')
+console.log("lesson 23 Literal Types")
+console.log(' ')
+
+function combine2 (
+    input1: number | string,
+    input2: number | string,
+    resultConversion: 'as-number' | 'as-text'
+    // Above we alow just these two specific strings, not just any sting
+    ){
+    let result
+
+    if( typeof input1 === 'number' && typeof input2 === 'number'){
+        result = input1 + input2
+    } else {
+        result = input1.toString() + input2.toString()
+    }
+
+    if (resultConversion === 'as-number'){
+        return +result
+    } else {
+        return result.toString()
+    }
+}
+
+const run3 = combine2 (22, 24, 'as-text')
+const run4 = combine2 (22, 24, 'as-number')
+const run5 = combine2 ("22", "24", 'as-number')
 
 
-// what we'll see if we hover the mouse over the const person is the object type inferred by TS. In this we don't have a tradiotinal ket value pairs, but key type pairs.
+console.log(run3 + ' -- here it did the addition normaly but outputed as a string')
+console.log(run4 + ' -- here it did the addition normaly but outputed as a number')
+console.log(run5 + ' -- here it concatenated the numbers, but outputed it as a number because we orderd it be converted')
 
-//console.log(person.nickname)
+console.log(' ')
+console.log("lesson 24 Type Aliases / Custom Types")
+console.log(' ')
 
-let favouritActivities: string[];  // This syntax accepts only an array of strings. If we wish to mux types of data we should do other syntax
-
-favouritActivities = ['Dancing']
-
-let any: any[] 
-// the syntax above accepts a mix of types of datas
-
-any = [1, 'Davi', true, favouritActivities]
-
-person.role.push('admin')
-person.role[1] = 10
-
-console.log(person.role)

@@ -33,3 +33,33 @@ It does exists in other programing languages, but in vanilla JS don't.
 Enum sample -> enum{NEW, OLD}
 
 Added by TS: automatically enumerated global constant identifiers.
+
+Here goes how we assign an enum:
+
+    enum Role {
+        ADMIN, READ_ONLY, AUTHOR
+    };
+
+In enums we get index as well as we get in arrays. And to access it's values we should go with the following syntax:
+
+    Role.ADMIN
+
+This way we tell TS exactly what we want to get inside the Enum
+
+We can set our own values as index if we want or need as well.
+    
+    enum Role {
+        ADMIN = 'Author', READ_ONLY = 100, AUTHOR = 777
+    };
+
+########## Lesson 21 - The "any" type
+
+The any type is the most flexible type we got in TS. It basically means that we can store any kinf of value in there.
+
+This type is a disadvantage and it's great if we avoid using it. It gives away all the advantages that the TS gives you.
+
+########## Lesson 23 - Literal types
+
+Literal types are the types wich are based on your core types, but then have a specific version of the type.
+
+########## lesson 24 - Type Aliases / Custom Types
