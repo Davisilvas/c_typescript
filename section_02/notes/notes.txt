@@ -63,3 +63,52 @@ This type is a disadvantage and it's great if we avoid using it. It gives away a
 Literal types are the types wich are based on your core types, but then have a specific version of the type.
 
 ########## lesson 24 - Type Aliases / Custom Types
+
+We can use it to store union types for example, making our code easier to write an read. Take a look at the following example:
+
+    type Combinable = number | string; 
+
+    function combine3 (
+        input1: Combinable,
+        input2: Combinable,
+
+In the piece of code above, we would have to specify the union type at every argument. But using a custom type that stored the type we're willing to use made our task easier.
+
+Type aliases can be used to "create" your own types. You're not limited to storing union types though - you can also provide an alias to a (possibly complex) object type.
+
+For example:
+
+    type User = { name: string; age: number };
+    const u1: User = { name: 'Max', age: 30 }; // this works!
+
+This allows you to avoid unnecessary repetition and manage types centrally.
+
+For example, you can simplify this code:
+
+    function greet(user: { name: string; age: number }) {
+    console.log('Hi, I am ' + user.name);
+    }
+    
+    function isOlder(user: { name: string; age: number }, checkAge: number) {
+    return checkAge > user.age;
+    }
+To:
+
+    type User = { name: string; age: number };
+    
+    function greet(user: User) {
+    console.log('Hi, I am ' + user.name);
+    }
+    
+    function isOlder(user: User, checkAge: number) {
+    return checkAge > user.age;
+    }
+
+########## lesson 26 - function return types & "void"
+
+in a simple addition function we'll see that TS infers that the arguments are number types. But untill now we never got to see that the TS also types what the function returns to us. So, comming back to the addition function, it'll also return type number.
+If we hover the mouse over the function it will show us the follwing:
+
+    function add(n1: number, n2: number): number
+
+After the Parentheses we got the return type.
