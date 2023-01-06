@@ -1,33 +1,17 @@
-console.log(' ')
-console.log("lesson 26 Return types & 'voids'")
+console.log("lesson 29 The 'unknown' type")
 console.log(' ')
 
-function add (n1: number, n2: number): number{
-    return n1 + n2   
+let userInput: unknown;
+
+console.log(' ')
+console.log("lesson 30 The 'never' type")
+console.log(' ')
+
+function generateError(message: string, code: number): never{
+    throw{
+        message: message,
+        errorCode: code,
+    };
 }
 
-function printResult(num: number){
-    console.log('The result is: ' + num)
-}
-
-let trash: undefined;
-
-printResult(add(5, 7))
-console.log(printResult(add(5, 7)))
-
-console.log(' ')
-console.log("lesson 27 function as types")
-console.log(' ')
-
-let combineValues: (a:number, b: number) => number;
-
-// let combineValues: Function;
-//combineValues = 1 -> error
-
-combineValues = add; 
-
-console.log(combineValues(7, 9))
-
-console.log(' ')
-console.log("lesson 28 function types & callbacks")
-console.log(' ')
+generateError('This cannot be found.', 404)

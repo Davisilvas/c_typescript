@@ -141,4 +141,25 @@ Here we stated that the variable will only be able to accept a function that ret
 
 This way we're the most clear as we can be with TS. Now if anything goes differently of what we stated before, it'll throw an error to us during the development so we can fix it before compiling the code.
 
-########## lesson 28 function types & callbacks
+########## lesson 29 The 'unknown' type
+
+It's of type unknown because we don't know what the user will eventually enter.
+
+So we can store any values there without getting any errors
+
+the difference between any & unknown type is that in any Ts gives up on any kind of check for errors durign development, and in unknown TS will throw some errors if we make mistakes.
+
+########## lesson 30 The 'never' type
+
+** remember: throw{} object throw an error to us.
+
+Never is another type functions can return.
+
+    function generateError(message: string, code: number){
+        throw{
+            message: message,
+            errorCode: code,
+        };
+    }
+
+If we take a look at this function we'll notice that it never produces a return value. This function always crashes the script, or part of it.
