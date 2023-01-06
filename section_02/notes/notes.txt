@@ -112,3 +112,33 @@ If we hover the mouse over the function it will show us the follwing:
     function add(n1: number, n2: number): number
 
 After the Parentheses we got the return type.
+
+When a function doesn't return something, it's type is void
+
+"Void means this function doesn't have a return statement, it doesn't returt anything." 
+
+In Js if we use the return of a function that doesn't return anything, we get undefined as a value. And as we know undefined in JS is a real value. And in TS undefined is also a Type. But undefined type only applies to variables, when we try to use it in a function TS throws an error.
+
+The only way to apply undefined in a function withou an error is if this function returns an undefined value.
+
+
+########## lesson 27 - function as types
+
+When we want to declare somtehing as type function, we should write it with a capital F, 'Function'. 
+
+"Functions types are types that describe a function."
+
+    let combineValues: Function;
+
+    combineValues = add;
+
+The code above works and won't return any error to us during runtime. However it's not the best way to use this type. Using like this we are vulnerable to a bunch of errors that, unfortunately, TS won't show to us during the development of the code.
+The best way to use this type is the following one:
+
+    let combineValues: (a:number, b: number) => number;
+
+Here we stated that the variable will only be able to accept a function that returns a type number, and also, this function can only have two arguments and both of type number.
+
+This way we're the most clear as we can be with TS. Now if anything goes differently of what we stated before, it'll throw an error to us during the development so we can fix it before compiling the code.
+
+########## lesson 28 function types & callbacks
