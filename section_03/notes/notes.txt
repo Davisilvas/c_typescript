@@ -1,0 +1,41 @@
+############ lesson 34 - using watch mode.
+
+With this command we set the TS wo watch a file and, whenever this file changes, it'll recompile.
+
+The comand is:
+    tsc app.ts -watch
+    tsc app.ts -w
+
+this command only targets one file.
+
+############ lesson 35 - Compiling the entire project / multiple files
+
+if we run tsc --init command, we'll tell to TS that this whole file is a TS project. And now we can run tsc without pointing an specific file, and it'll tell TS to go ahead and compile all the .ts files existing in this project.
+
+    tsc --init
+    tsc
+    tsc -watch
+    tsc -w
+
+############ lesson 36 - Including and excluding files
+
+To exclude a specific file during a global compiling, we add this command in the tsconfig.json
+  
+  "exclude": [
+    "analytics.ts"
+  ]
+
+A common thing is to put "node_modules" in this section in orther to prevent the code to run any TS file that exists in this paste. It prevent errors and in the worst case it might even brake our project.
+
+Include does the oposite. It will compile only what is in include.
+
+
+############ lesson 37 - Setting a compilation target.
+
+
+
+############ lesson 39- AllowJS, CheckJS
+
+With this we allowJs files to be compiled. And whit the checkJs it won't compile it but will check the syntax in there.
+
+############ lesson 40- Working with source maps
