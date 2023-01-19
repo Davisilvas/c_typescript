@@ -1,0 +1,1 @@
+This is a discriminated union cause we have one common propterty in every object that makes up our union, wich describes that object so that we can use this propterty that describes this object in our check.

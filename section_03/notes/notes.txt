@@ -39,3 +39,7 @@ Include does the oposite. It will compile only what is in include.
 With this we allowJs files to be compiled. And whit the checkJs it won't compile it but will check the syntax in there.
 
 ############ lesson 40- Working with source maps
+
+
+"rootDir": "./src" --> here we tell TS where he should get the files to compile
+"outDir": "./dist" --> here we tell TS where he should store the JS files that will be generated.
