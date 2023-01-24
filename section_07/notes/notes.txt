@@ -1,0 +1,12 @@
+A generic type is a type that is kinda connected with some other type and is really flexible regarding witch exact type that other type is.
+
+Why would we build a generic class?
+R: maybe we wanna store different types of data in objects of that class. So a generic Class would be usefull in that case.
+
+"really flexible and still perfect types support."
+
+101 *********
+Partial
+Readonly --> not limited to array. Can be used in objects too.
+
+"You want union types when you're flexible to have a different type with every method call, function call. And generic types lock in a type."
