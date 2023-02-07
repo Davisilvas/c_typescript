@@ -212,5 +212,120 @@ const pers = new Person();
 console.log(pers)
 
 console.log(' ')
-console.log('112 - Other Decorator Return Types.')
+console.log('114 - Creating an "Autobind" Decorator.')
+// THIS IS HOW WE GET A VALUE FROM A CONSTRUCTOR AND USE IT IN A DECORATOR!!!
 console.log(' ')
+
+function Autobind(_: any, _2: string | symbol, descriptor: PropertyDescriptor){
+    const originalMethod = descriptor.value;
+    const adjDescriptor: PropertyDescriptor = {
+        configurable: true,
+        enumerable: false,
+        get(){
+            const boundFn = originalMethod.bind(this)
+            return boundFn
+        }
+    };
+    return adjDescriptor
+}
+
+class Printer {
+    // message: string = "This works!";
+    message: string
+    
+    constructor (m: string){
+        this.message = m
+    }
+    
+    @Autobind
+    showMessage(){
+        console.log(this.message)
+    }
+}
+
+const p = new Printer("Getting a value from the constructor!!")
+
+const btn = document.querySelector('button')!;
+btn.addEventListener('click', p.showMessage)
+
+// -> this is how it works in vanilla JS, without the use of decorators.
+// btn.addEventListener('click', p.showMessage.bind(p))
+
+console.log(' ')
+console.log('115 - Validation with decorators.')
+console.log(' ')
+
+interface ValidatorConfig {
+    [property: string]:{
+        [validatableProp: string]: string[]
+    }
+}
+
+const registeredValidators: ValidatorConfig = {}
+
+function Required(target: any, propName: string){
+    registeredValidators[target.constructor.name] = {
+        ...registeredValidators[target.constructor.name],
+        [propName]: ['required']
+    };
+}
+
+function PositiveNumber(target: any, propName: string){
+    registeredValidators[target.constructor.name] = {
+        ...registeredValidators[target.constructor.name],
+        [propName]: ['positive']
+    };
+}
+
+function validate(obj: any){
+    const objValidatorConfig = registeredValidators[obj.constructor.name];
+    if (!objValidatorConfig){
+        return true
+    }
+
+    let isValid = true;
+    for (const prop in objValidatorConfig){
+        console.log(prop)
+        for (const validator of objValidatorConfig[prop]){
+            switch(validator){
+                case 'required':
+                    isValid = isValid && !!obj[prop]
+                    break;
+                case 'positive':
+                    isValid = isValid && obj[prop] > 0
+                    break;
+            }
+        }
+    }
+    return isValid
+}
+
+class Course {
+    @Required
+    title: string;
+    @PositiveNumber
+    price: number;
+
+    constructor(t: string, p: number){
+        this.title = t,
+        this.price = p
+    }
+}
+
+const courseForm = document.querySelector('form')!;
+
+courseForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const titleElement = document.getElementById('title') as HTMLInputElement;
+    const priceElement = document.getElementById('price') as HTMLInputElement;
+
+    const title = titleElement.value;
+    const price = +priceElement.value;
+
+    const createdCourse = new Course(title, price);
+
+    if (!validate(createdCourse)){
+        alert('Invalid input, please try again.')
+    }
+    console.log(createdCourse)
+})
