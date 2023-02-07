@@ -1,0 +1,3 @@
+Decorators runs when Js finds your class definition, your constructor function definition.
+
+decorators can be logged to class, functions, setters & getters, methods and arguments.
