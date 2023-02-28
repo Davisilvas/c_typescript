@@ -222,7 +222,7 @@ class ProjectItem extends Component <HTMLUListElement, HTMLLIElement>
     @Autobind
     dragStartHandler(event: DragEvent): void {
         event.dataTransfer!.setData('text/plain', this.project.id)
-        event.dataTransfer!. effectAllowed = 'move'
+        event.dataTransfer!.effectAllowed = 'move'
     }
 
     @Autobind
